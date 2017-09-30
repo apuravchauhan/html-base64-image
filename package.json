@@ -1,0 +1,23 @@
+{
+  "name": "html-base64-image",
+  "version": "1.0.0",
+  "description": "A npm package to convert your local image references in any dom element with inline base 64 data uri. This technique is beneficial for saving extra image requests and rendering lightning fast images.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "keywords": [
+    "html-inline-images",
+    "lqip",
+    "low quality image placeholders"
+  ],
+  "author": "Apurav Chauhan <apurav.chauhan@gmail.com> (http://apuravchauhan.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0"
+  }
+}
