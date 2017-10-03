@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
+const sizeOf = require('image-size');
 const contentTypes = {
   ".png": "image/png",
   ".gif": "image/gif",
@@ -29,6 +30,23 @@ module.exports = function(html,assetRoot) {
       el = dom(el)
       let src = el.attr('img-url');
       if (src && isLocalImg(src)) {
+
+        /**
+         * If need to enable lqip feature 
+         * 
+         * @lqip-parent-url is mandatory
+         */
+        if(el.attr('lqip') == 'true' && el.attr('lqip-parent-url')){
+          let highResFile = el.attr('lqip-parent-url');         
+          let bigFile = path.join(assetRoot, highResFile);
+          let dimensions = sizeOf(bigFile);
+          el.css("max-width", dimensions.width+'px');
+          el.css("max-height", dimensions.height+'px');
+          let pB = (dimensions.height / dimensions.width) * 100;
+          el.append(`<div class="aspectRatioPlaceholder-fill" style="padding-bottom:${pB}%"></div>
+                     <img src="${highResFile}"/>`)
+        }
+
         let file = path.join(assetRoot, src);
         let img = fs.readFileSync(file);
         var contentType = contentTypes[path.extname(file)] || 'image/png';
