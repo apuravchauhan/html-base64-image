@@ -1,6 +1,6 @@
 {
   "name": "html-base64-image",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A npm package to convert your local image references in any dom element with inline base 64 data uri. This technique is beneficial for saving extra image requests and rendering lightning fast images.",
   "main": "index.js",
   "scripts": {
