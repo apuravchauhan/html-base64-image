@@ -43,8 +43,7 @@ module.exports = function(html,assetRoot) {
           el.css("max-width", dimensions.width+'px');
           el.css("max-height", dimensions.height+'px');
           let pB = (dimensions.height / dimensions.width) * 100;
-          el.append(`<div class="aspectRatioPlaceholder-fill" style="padding-bottom:${pB}%"></div>
-                     <img src="${highResFile}"/>`)
+          el.append(`<div class="aspectRatioPlaceholder-fill" style="padding-bottom:${pB}%"></div>`)
         }
 
         let file = path.join(assetRoot, src);
